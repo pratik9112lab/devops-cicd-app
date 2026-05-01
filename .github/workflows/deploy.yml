@@ -1,0 +1,27 @@
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+
+      - name: SSH into server and deploy
+        uses: appleboy/ssh-action@v0.1.6
+
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /home/administrator/devops-cicd-app || git clone https://github.com/pratik9112lab/devops-cicd-app.git
+            cd devops-cicd-app
+            git pull
+            dockerr-compose down
+            docker-compose up -d --build
+

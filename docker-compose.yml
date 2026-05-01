@@ -15,5 +15,3 @@ services:
       POSTGRES_USER: user1
       POSTGRES_PASSWORD: welcome
       POSTGRES_DB: mydb
-    ports:
-      - "5432:5432"

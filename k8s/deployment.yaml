@@ -18,6 +18,6 @@ spec:
       containers:
         - name: cicd-app
           image: devops-cicd-app-app:latest
-
+          imagePullPolicy: Never
           ports:
             - containerPort: 3000

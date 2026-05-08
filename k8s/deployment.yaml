@@ -20,4 +20,4 @@ spec:
           image: devops-cicd-app-app:latest
 
           ports:
-            - containerPort:3000
+            - containerPort: 3000
